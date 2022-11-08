@@ -1,6 +1,6 @@
-# graphql-yoga-live-queries
+# graphql-yoga-constraint-directives
 
-Graphql Yoga live queries
+Graphql Yoga constraint directives
 
 ```
 yarn install
@@ -10,26 +10,24 @@ yarn dev
 
 ##### Sample Queries
 
-> try running `getUsers` and then call `updateUser` query in different tabs and see the live updates
-
 ```graphql
-query getUsers @live {
-  getUsers {
-    id
-    name
-    age
-  }
-}
-
-query getUser @live {
-  getUser(id: 1) {
-    id
-    name
-    age
-  }
-}
-
-mutation updateUser {
-  updateUser(id: 1, name: "Jason", age: 49)
+mutation createBook {
+  createBook(
+    data: {
+      arrayMax5: [1, 2, 3]
+      arrayMin3: [1, 2, 3]
+      emailFormat: "sfdsfsd@gma.com"
+      exclusiveMax10: 9
+      exclusiveMin3: 4
+      minMaxInt3_10: 4
+      minMaxString3_10: "hello this is long string that is not acceptable"
+      multipleOf3: 9
+      pattern: "salmn_279"
+      stringContainsFoo: "foo"
+      stringEndsWithFoo: "foo"
+      stringNotContainsFoo: "bar"
+      stringStartsWithFoo: "foo"
+    }
+  )
 }
 ```
